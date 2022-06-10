@@ -1,3 +1,4 @@
+using JwtAuth.Entities;
 using JwtAuth.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -10,5 +11,6 @@ namespace JwtAuth.Context
         {
 
         }
+        public DbSet<TodoItem> TodoItems { get; set; } = null!;
     }
 }
