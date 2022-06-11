@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace JwtAuth.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220610135644_autoincrement")]
-    partial class autoincrement
+    [Migration("20220611023213_initial create")]
+    partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,13 +32,21 @@ namespace JwtAuth.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("text");
+
                     b.Property<bool>("IsComplete")
                         .HasColumnType("boolean");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
+                    b.Property<string>("Secret")
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("TodoItems");
                 });
@@ -245,6 +253,15 @@ namespace JwtAuth.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("JwtAuth.Entities.TodoItem", b =>
+                {
+                    b.HasOne("JwtAuth.Models.ApplicationUser", "applicationUser")
+                        .WithMany("TodoItems")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.Navigation("applicationUser");
+                });
+
             modelBuilder.Entity("JwtAuth.Models.ApplicationUser", b =>
                 {
                     b.OwnsMany("JwtAuth.Entities.RefreshToken", "RefreshTokens", b1 =>
@@ -330,6 +347,11 @@ namespace JwtAuth.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("JwtAuth.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("TodoItems");
                 });
 #pragma warning restore 612, 618
         }

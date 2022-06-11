@@ -30,6 +30,9 @@ namespace JwtAuth.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("text");
+
                     b.Property<bool>("IsComplete")
                         .HasColumnType("boolean");
 
@@ -40,6 +43,8 @@ namespace JwtAuth.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("TodoItems");
                 });
@@ -246,6 +251,15 @@ namespace JwtAuth.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("JwtAuth.Entities.TodoItem", b =>
+                {
+                    b.HasOne("JwtAuth.Models.ApplicationUser", "applicationUser")
+                        .WithMany("TodoItems")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.Navigation("applicationUser");
+                });
+
             modelBuilder.Entity("JwtAuth.Models.ApplicationUser", b =>
                 {
                     b.OwnsMany("JwtAuth.Entities.RefreshToken", "RefreshTokens", b1 =>
@@ -331,6 +345,11 @@ namespace JwtAuth.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("JwtAuth.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("TodoItems");
                 });
 #pragma warning restore 612, 618
         }

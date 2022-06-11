@@ -19,13 +19,16 @@ namespace JwtAuth.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly JWT _jwt;
+        private readonly IHttpContextAccessor _context;
 
-        public UserService(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IOptions<JWT> jwt, ApplicationDbContext dbContext)
+
+        public UserService(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IOptions<JWT> jwt, ApplicationDbContext dbContext, IHttpContextAccessor context)
         {
             _dbContext = dbContext;
             _userManager = userManager;
             _roleManager = roleManager;
             _jwt = jwt.Value;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
         public async Task<string> RegisterAsync(RegisterModel model)
         {
@@ -209,6 +212,11 @@ namespace JwtAuth.Services
         public ApplicationUser GetById(string id)
         {
             return _dbContext.Users.Find(id);
+        }
+
+        public string GetUserId()
+        {
+            return _context.HttpContext.User.Claims.First(i => i.Type == "uid").Value;
         }
     }
 }

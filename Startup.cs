@@ -34,6 +34,7 @@ namespace JWTAuthentication.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             //Configuration from AppSettings
             services.Configure<JWT>(_configuration.GetSection("JWT"));
 

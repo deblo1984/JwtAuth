@@ -2,11 +2,13 @@ using JwtAuth.Context;
 using JwtAuth.Entities;
 using JwtAuth.Models;
 using JwtAuth.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 namespace JwtAuth.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TodoItemController : ControllerBase
@@ -18,9 +20,13 @@ namespace JwtAuth.Controllers
             _userService = userService;
             _dbContext = dbContext;
         }
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
-        public async Task<ActionResult<TodoItem>> CreateTodoItem(TodoItem todoItem)
+        public async Task<ActionResult<TodoItem>> CreateTodoItem([FromBody] TodoItem todoItem)
         {
+
+            todoItem.Secret = "rahasia";
+            todoItem.ApplicationUserId = _userService.GetUserId();
             _dbContext.TodoItems.Add(todoItem);
             await _dbContext.SaveChangesAsync();
             return Ok(todoItem);
@@ -28,8 +34,10 @@ namespace JwtAuth.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItemDto>>> GetTodoItems()
         {
+            var response = await _dbContext.TodoItems.Include(u => u.applicationUser).ToListAsync();
 
-            return await _dbContext.TodoItems.Select(x => ItemToDto(x)).ToListAsync();
+
+            return Ok(response);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItemDto>> GetTodoItem(int id)
@@ -83,7 +91,8 @@ namespace JwtAuth.Controllers
         {
             Id = todoItem.Id,
             Name = todoItem.Name,
-            IsComplete = todoItem.IsComplete
+            IsComplete = todoItem.IsComplete,
+            applicationUser = todoItem.applicationUser
         };
     }
 }

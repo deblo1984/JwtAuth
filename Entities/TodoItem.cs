@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using JwtAuth.Models;
 
 namespace JwtAuth.Entities
 {
@@ -13,5 +14,8 @@ namespace JwtAuth.Entities
         [Required]
         public bool IsComplete { get; set; }
         public string? Secret { get; set; }
+
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser applicationUser { get; set; }
     }
 }

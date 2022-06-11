@@ -13,5 +13,6 @@ namespace JwtAuth.Models
         [Column(TypeName = "varchar(50)")]
         public string LastName { get; set; }
         public List<RefreshToken> RefreshTokens { get; set; }
+        public ICollection<TodoItem> TodoItems { get; set; }
     }
 }

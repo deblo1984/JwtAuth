@@ -16,6 +16,8 @@ namespace JwtAuth.Services
 
         ApplicationUser GetById(string id);
 
+        string GetUserId();
+
         bool RevokeToken(string token);
     }
 }

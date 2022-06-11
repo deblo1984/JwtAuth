@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uYKKHc98EEfp9j3K0HyGrBnGgTzLlmNiaq8jy7mcwKUIPsGL+sF1Ot1IyfxgO7id+L4h0EAY2PrvTUTQUCxy0Q==",
+  "dgSpecHash": "Gfj+L1nxaKbY64yDrUlhTnZyyh+sBmjwtIlgYy4zh+l+ZdAs616Bnr1KbrtobbfHHfP1Gmhx5bdjeYGwT+9Zog==",
   "success": true,
   "projectFilePath": "/home/bintang/Projects/dotnet/JwtAuth/JwtAuth.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,9 @@
     "/home/bintang/.nuget/packages/microsoft.aspnetcore.cryptography.internal/6.0.5/microsoft.aspnetcore.cryptography.internal.6.0.5.nupkg.sha512",
     "/home/bintang/.nuget/packages/microsoft.aspnetcore.cryptography.keyderivation/6.0.5/microsoft.aspnetcore.cryptography.keyderivation.6.0.5.nupkg.sha512",
     "/home/bintang/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/6.0.5/microsoft.aspnetcore.identity.entityframeworkcore.6.0.5.nupkg.sha512",
-    "/home/bintang/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
+    "/home/bintang/.nuget/packages/microsoft.aspnetcore.jsonpatch/6.0.5/microsoft.aspnetcore.jsonpatch.6.0.5.nupkg.sha512",
+    "/home/bintang/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/6.0.5/microsoft.aspnetcore.mvc.newtonsoftjson.6.0.5.nupkg.sha512",
+    "/home/bintang/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/home/bintang/.nuget/packages/microsoft.entityframeworkcore/6.0.5/microsoft.entityframeworkcore.6.0.5.nupkg.sha512",
     "/home/bintang/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.5/microsoft.entityframeworkcore.abstractions.6.0.5.nupkg.sha512",
     "/home/bintang/.nuget/packages/microsoft.entityframeworkcore.analyzers/6.0.5/microsoft.entityframeworkcore.analyzers.6.0.5.nupkg.sha512",
@@ -35,6 +37,8 @@
     "/home/bintang/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/6.10.0/microsoft.identitymodel.protocols.openidconnect.6.10.0.nupkg.sha512",
     "/home/bintang/.nuget/packages/microsoft.identitymodel.tokens/6.19.0/microsoft.identitymodel.tokens.6.19.0.nupkg.sha512",
     "/home/bintang/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/home/bintang/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
+    "/home/bintang/.nuget/packages/newtonsoft.json.bson/1.0.2/newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "/home/bintang/.nuget/packages/npgsql/6.0.4/npgsql.6.0.4.nupkg.sha512",
     "/home/bintang/.nuget/packages/npgsql.entityframeworkcore.postgresql/6.0.4/npgsql.entityframeworkcore.postgresql.6.0.4.nupkg.sha512",
     "/home/bintang/.nuget/packages/swashbuckle.aspnetcore/6.2.3/swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
